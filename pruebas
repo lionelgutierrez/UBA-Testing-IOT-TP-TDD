@@ -1,0 +1,14 @@
+En una lista vacia hay 0 elementos
+Si agrego un elemento a una lista vacia hay 1 elemento
+Si agrego 2 elementos a una lista vacia hay 2 elemento
+Si busco un valor a partir de una clave que no existe no tengo resultado
+Se puede actualizar un valor 
+En una lista vacia no hay claves
+No hay claves sin valor
+Puedo agregar una pareja y recuperar el valor a partir de la clave
+No puedo agregar 2 claves iguales
+Se puede borrar una clave
+Si se borra una clave la cantidad disminuye en 1
+No puedo agregar una clave numerica
+Se puede recuperar la lista de claves insertadas
+Como gestiono los errores
