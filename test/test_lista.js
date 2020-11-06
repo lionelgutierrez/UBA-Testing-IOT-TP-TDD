@@ -19,9 +19,9 @@ OK  3- En una lista vacía no se encuentra ninguna clave.
 OK  4- Cuando se agrega un elemento a una lista vacía se puede recuperar el valor a partir de la clave.
 OK  5- Cuando se agrega una clave que ya está en la lista se actualiza el valor correspondiente.
 OK  6- Cuando se agrega una clave que ya está en la lista no cambia la cantidad de elementos almacenados.
- 7- Cuando se agregan un elemento a una lista vacía la lista de claves esta ordenada.
- 8- Cuando se agrega un elemento al principio la lista de claves esta ordenada.
- 9- Cuando se agrega un elemento al final la lista de claves esta ordenada.
+OK  7- Cuando se agregan un elemento a una lista vacía la lista de claves esta ordenada.
+ 8- Cuando tengo una lista con un elemento y agrego una clave mayor, la lista de claves esta ordenada.
+ 9- Cuando tengo una lista con un elemento y agrego una clave menor, la lista de claves esta ordenada.
  10- Si agrego 2 elementos a la lista entonces puedo buscar cada uno de los valores. 
  11- si borro una clave de una lista vacia la misma queda vacia
  12- cuando agrego un elemento a una lista vacia y lo borro la lista queda vacia
@@ -85,5 +85,18 @@ describe("Cuando se agrega una clave que ya está en la lista",function(){
 })
 
 
+describe("Cuando tengo una lista con un elemento." , function() {
+    var lista = new Lista();
+    lista.add("clave","valor");
+
+    it("8- Agrego una clave mayor y la lista de claves esta ordenada", function() {
+        lista.add("mayorclave","valor2");
+        var listasalida = lista.devolverListaArray();
+        primerElemento = listasalida[0];
+        ultimoElemento = listasalida[1];
+        assert.isTrue(primerElemento.clave <= ultimoElemento.clave);
+    })
+
+})
 
 
