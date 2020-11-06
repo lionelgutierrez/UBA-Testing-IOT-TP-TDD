@@ -22,8 +22,8 @@ OK  6- Cuando se agrega una clave que ya está en la lista no cambia la cantidad
 OK  7- Cuando se agregan un elemento a una lista vacía la lista de claves esta ordenada.
 OK  8- Cuando tengo una lista con un elemento y agrego una clave mayor, la lista de claves esta ordenada.
 OK 9- Cuando tengo una lista con un elemento y agrego una clave menor, la lista de claves esta ordenada.
- 10- Si agrego 2 elementos a la lista entonces puedo buscar cada uno de los valores. 
- 11- si borro una clave de una lista vacia la misma queda vacia
+OK 10- Si agrego 2 elementos a la lista entonces puedo buscar cada uno de los valores. 
+ 11- en una lista vacia si borro una clave la lista queda vacia
  12- cuando agrego un elemento a una lista vacia y lo borro la lista queda vacia
  13- cuando agrego un elemento a una lista vacia e intento borrar una clave diferente, la lista no se modifica 
 
@@ -42,6 +42,10 @@ describe("en una lista vacia" , function() {
         assert.isNaN(lista.find("clave"));
     })
 
+    it("11- si borro una clave la lista queda vacia", function(){
+        lista.delete("clave");
+        assert.equal(lista.count(),0);
+    })
 
 })
 
