@@ -97,8 +97,18 @@ describe("Cuando tengo una lista con un elemento." , function() {
         assert.isTrue(primerElemento.clave <= ultimoElemento.clave);
     })
 
-
-
 })
 
+describe("Cuando tengo una lista con un elemento." , function() {
+    var lista = new Lista();
+    lista.add("claveInicial","valor");
+
+    it("9- Agrego una clave menor y la lista de claves esta ordenada", function() {
+        lista.add("claveAgregadaMenor","valor3");
+        var listasalida = lista.devolverListaArray();
+        primerElemento = listasalida[0];
+        ultimoElemento = listasalida[1];
+        assert.isTrue(primerElemento.clave <= ultimoElemento.clave);
+    })
+})
 

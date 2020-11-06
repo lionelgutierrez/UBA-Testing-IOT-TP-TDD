@@ -36,6 +36,8 @@ module.exports = class Lista {
     }
 
     devolverListaArray() {
-        return this.#elementos.slice();
+        var listasalida = this.#elementos.slice();
+        listasalida.sort(function(a,b) {return ((a.clave < b.clave) ? -1 : ((a.clave >  b.clave) ? 1 : 0));});
+        return listasalida;
     }
 }
