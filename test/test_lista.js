@@ -23,7 +23,9 @@ OK  6- Cuando se agrega una clave que ya está en la lista no cambia la cantidad
  8- Cuando se agrega un elemento al principio la lista de claves esta ordenada.
  9- Cuando se agrega un elemento al final la lista de claves esta ordenada.
  10- Si agrego 2 elementos a la lista entonces puedo buscar cada uno de los valores. 
- 
+ 11- si borro una clave de una lista vacia la misma queda vacia
+ 12- cuando agrego un elemento a una lista vacia y lo borro la lista queda vacia
+ 13- cuando agrego un elemento a una lista vacia e intento borrar una clave diferente, la lista no se modifica 
 
  */
 
@@ -54,6 +56,13 @@ describe("cuando se agrega un elemento a una lista vacia" , function() {
 
     it("4- se puede recuperar el valor a partir de la clave", function() {
         assert.equal(lista.find("clave"),"valor");
+    })
+
+    it("7- la lista esta ordenada", function() {
+        var listasalida = lista.devolverListaArray();
+        primerElemento = listasalida[0];
+        ultimoElemento = listasalida[0];
+        assert.equal(primerElemento,ultimoElemento);
     })
 })
 

@@ -34,4 +34,8 @@ module.exports = class Lista {
         this.#elementos.push({clave,valor});    
         
     }
+
+    devolverListaArray() {
+        return this.#elementos.slice();
+    }
 }
