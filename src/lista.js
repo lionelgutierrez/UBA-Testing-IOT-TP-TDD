@@ -11,13 +11,27 @@ module.exports = class Lista {
     }
 
     find(clave) {
-        if (this.#elementos.length == 1){
-            return this.#elementos[0].valor;
+        if (this.#elementos.length > 0) {
+            for(var i=0; i<this.#elementos.length;i++ )  {
+                if (this.#elementos[i].clave == clave) {
+                    return this.#elementos[i].valor;
+                }
+            }
         }
-        return NaN;
+        else {
+            return NaN;
+        }
     }
 
     add(clave,valor){
-        this.#elementos.push({clave,valor})        
+        
+        for(var i=0; i<this.#elementos.length;i++ )  {
+            if (this.#elementos[i].clave == clave) {
+                this.#elementos[i].valor = valor;
+                return;
+            }
+        }
+        this.#elementos.push({clave,valor});    
+        
     }
 }
