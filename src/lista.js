@@ -43,5 +43,14 @@ module.exports = class Lista {
 
     delete(clave) {
         
+
+        for(var i=0; i<this.#elementos.length;i++ )  {
+            if (this.#elementos[i].clave == clave) {
+                this.#elementos.splice(i,1);
+                return;
+            }
+        }
+        
+        
     }
 }

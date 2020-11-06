@@ -23,10 +23,10 @@ OK  7- Cuando se agregan un elemento a una lista vacía la lista de claves esta 
 OK  8- Cuando tengo una lista con un elemento y agrego una clave mayor, la lista de claves esta ordenada.
 OK 9- Cuando tengo una lista con un elemento y agrego una clave menor, la lista de claves esta ordenada.
 OK 10- Si agrego 2 elementos a la lista entonces puedo buscar cada uno de los valores. 
- 11- en una lista vacia si borro una clave la lista queda vacia
- 12- cuando agrego un elemento a una lista vacia y lo borro la lista queda vacia
- 13- cuando agrego un elemento a una lista vacia e intento borrar una clave diferente, la lista no se modifica 
-
+OK 11- en una lista vacia si borro una clave la lista queda vacia
+OK 12- Si agrego 2 elementos a la lista y borro el primero me queda una lista de un solo elemento con la clave del segundo agregado
+OK 13- cuando agrego un elemento a una lista vacia e intento borrar una clave diferente, la lista no se modifica 
+OK 14- cuando agrego un elemento a una lista vacia y lo borro la lista queda vacia
  */
 
 const assert = require("chai").assert;
@@ -67,6 +67,18 @@ describe("cuando se agrega un elemento a una lista vacia" , function() {
         primerElemento = listasalida[0];
         ultimoElemento = listasalida[0];
         assert.equal(primerElemento,ultimoElemento);
+    })
+
+    it("13- intento borrar una clave diferente yla lista no se modifica", function() {
+        lista.delete("clave1");
+        assert.equal(lista.count(),1);
+
+    })
+
+    it("14- si borro el elemento la lista queda vacia", function() {
+        lista.delete("clave");
+        assert.equal(lista.count(),0);
+
     })
 })
 
@@ -127,5 +139,14 @@ describe("Si agrego 2 elementos a una lista." , function() {
         assert.equal(valor1,"valor1")
         assert.equal(valor2,"valor2")
     })
+
+    it("12- borro el primer elemento y me queda una lista de un elemento solo con clave igual al segundo elemento", function() {
+        lista.delete("clave1");
+        var valorsalida = lista.find("clave2");
+        assert.equal(lista.count(),1);
+        assert.equal(valorsalida,"valor2")
+        
+    })
+    
 })
 
