@@ -2,7 +2,6 @@ module.exports = class Lista {
     #elementos;
     constructor(){
         this.#elementos = [];
-
     }
 
     count() {
@@ -11,12 +10,9 @@ module.exports = class Lista {
     }
 
     find(clave) {
-        if (this.#elementos.length > 0) {
-            for(var i=0; i<this.#elementos.length;i++ )  {
-                if (this.#elementos[i].clave == clave) {
-                    return this.#elementos[i].valor;
-                }
-            }
+        var i = this.indice(clave);
+        if (i >= 0) {
+            return this.#elementos[i].valor;
         }
         else {
             return NaN;
@@ -25,13 +21,13 @@ module.exports = class Lista {
 
     add(clave,valor){
         
-        for(var i=0; i<this.#elementos.length;i++ )  {
-            if (this.#elementos[i].clave == clave) {
-                this.#elementos[i].valor = valor;
-                return;
-            }
+        var i = this.indice(clave);
+        if (i >= 0) {
+            this.#elementos[i].valor = valor;
         }
-        this.#elementos.push({clave,valor});    
+        else {
+            this.#elementos.push({clave,valor});  
+        }
         
     }
 
@@ -43,14 +39,18 @@ module.exports = class Lista {
 
     delete(clave) {
         
+        var i = this.indice(clave);
+        if (i >= 0) {
+           this.#elementos.splice(i,1);
+        }
+    }
 
+    indice(clave) {
         for(var i=0; i<this.#elementos.length;i++ )  {
             if (this.#elementos[i].clave == clave) {
-                this.#elementos.splice(i,1);
-                return;
+                return i;
             }
         }
-        
-        
+        return -1;
     }
 }

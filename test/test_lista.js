@@ -11,7 +11,12 @@ Se debe poder recuperar la cantidad de elementos almacenados en la lista.
 Se debe poder recuperar una lista ordenada con las claves almacenadas en la lista.
 Se puede borrar una pareja a partir de la clave.
 
-en repo habilitar los issues
+(**) en repo habilitar los issues
+
+
+Conjunto de tests propuestos
+----------------------------
+
 
 OK  1- En una lista vacía hay cero elementos.
 OK  2- Cuando se agrega un elemento a una lista vacía hay un elemento.
