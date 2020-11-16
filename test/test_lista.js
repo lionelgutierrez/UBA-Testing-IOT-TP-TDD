@@ -24,15 +24,19 @@ OK  3- En una lista vacía no se encuentra ninguna clave.
 OK  4- Cuando se agrega un elemento a una lista vacía se puede recuperar el valor a partir de la clave.
 OK  5- Cuando se agrega una clave que ya está en la lista se actualiza el valor correspondiente.
 OK  6- Cuando se agrega una clave que ya está en la lista no cambia la cantidad de elementos almacenados.
-OK  7- Cuando se agregan un elemento a una lista vacía la lista de claves esta ordenada.
-OK  8- Cuando tengo una lista con un elemento y agrego una clave mayor, la lista de claves esta ordenada.
-OK 9- Cuando tengo una lista con un elemento y agrego una clave menor, la lista de claves esta ordenada.
 OK 10- Si agrego 2 elementos a la lista entonces puedo buscar cada uno de los valores. 
 OK 11- en una lista vacia si borro una clave la lista queda vacia
 OK 12- Si agrego 2 elementos a la lista y borro el primero me queda una lista de un solo elemento con la clave del segundo agregado
 OK 13- cuando agrego un elemento a una lista vacia e intento borrar una clave diferente, la lista no se modifica 
 OK 14- cuando agrego un elemento a una lista vacia y lo borro la lista queda vacia
- */
+
+Quitados 7, 8 y 9. Agregado 15
+7- Cuando se agregan un elemento a una lista vacía la lista de claves esta ordenada.
+8- Cuando tengo una lista con un elemento y agrego una clave mayor, la lista de claves esta ordenada.
+9- Cuando tengo una lista con un elemento y agrego una clave menor, la lista de claves esta ordenada.
+OK 15-En una lista desordenada de tres elemento, al recuperar la lista de claves, la misma esta ordenada
+
+*/
 
 const assert = require("chai").assert;
 const Lista = require("../src/lista");
@@ -67,12 +71,6 @@ describe("cuando se agrega un elemento a una lista vacia" , function() {
         assert.equal(lista.find("clave"),"valor");
     })
 
-    it("7- la lista esta ordenada", function() {
-        var listasalida = lista.devolverListaArray();
-        primerElemento = listasalida[0];
-        ultimoElemento = listasalida[0];
-        assert.equal(primerElemento,ultimoElemento);
-    })
 
     it("13- intento borrar una clave diferente yla lista no se modifica", function() {
         lista.delete("clave1");
@@ -105,33 +103,20 @@ describe("Cuando se agrega una clave que ya está en la lista",function(){
 
 })
 
-
-describe("Cuando tengo una lista con un elemento." , function() {
+describe("En una lista desordenada de tres elementos." , function() {
     var lista = new Lista();
     lista.add("claveInicial","valor");
-
-    it("8- Agrego una clave mayor y la lista de claves esta ordenada", function() {
-        lista.add("claveMayor","valor2");
-        var listasalida = lista.devolverListaArray();
-        primerElemento = listasalida[0];
-        ultimoElemento = listasalida[1];
-        assert.isTrue(primerElemento.clave <= ultimoElemento.clave);
+    lista.add("claveMayor","valor2");
+    lista.add("claveAgregadaMenor","valor3");
+    
+    it("15- al recuperar la lista de claves, la misma esta ordenada", function() {
+        var listasalida = lista.getKeysOrdered();
+        var listaordenada = listasalida.sort();
+        assert.equal(listasalida,listaordenada);
     })
 
 })
 
-describe("Cuando tengo una lista con un elemento." , function() {
-    var lista = new Lista();
-    lista.add("claveInicial","valor");
-
-    it("9- Agrego una clave menor y la lista de claves esta ordenada", function() {
-        lista.add("claveAgregadaMenor","valor3");
-        var listasalida = lista.devolverListaArray();
-        primerElemento = listasalida[0];
-        ultimoElemento = listasalida[1];
-        assert.isTrue(primerElemento.clave <= ultimoElemento.clave);
-    })
-})
 
 describe("Si agrego 2 elementos a una lista." , function() {
     var lista = new Lista();

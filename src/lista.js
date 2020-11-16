@@ -31,10 +31,12 @@ module.exports = class Lista {
         
     }
 
-    devolverListaArray() {
-        var listasalida = this.#elementos.slice();
-        listasalida.sort(function(a,b) {return ((a.clave < b.clave) ? -1 : ((a.clave >  b.clave) ? 1 : 0));});
-        return listasalida;
+    getKeysOrdered() {
+        var listasalida = [];
+        this.#elementos.forEach(elem => {
+            listasalida.push(elem.clave);
+        });
+        return listasalida.sort();
     }
 
     delete(clave) {
